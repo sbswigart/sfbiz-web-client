@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import ENV from 'sfbiz-web-client/config/environment';
 
 const {
   String: {
@@ -9,7 +10,7 @@ const {
 } = Ember;
 
 export default DS.JSONAPIAdapter.extend({
-  host: 'http://aqueous-cliffs-83557.herokuapp.com',
+  host: ENV.APP.host,
   pathForType(type) {
     return pluralize(underscore(type));
   }

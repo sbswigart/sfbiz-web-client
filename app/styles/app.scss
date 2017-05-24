@@ -1,0 +1,11 @@
+.fav-btn {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: 0;
+  padding: 0 1px;
+  &:focus {
+    outline: 0;
+  }
+}
