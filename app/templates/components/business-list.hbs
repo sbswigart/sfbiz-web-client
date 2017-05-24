@@ -10,8 +10,8 @@
       </tr>
     </thead>
     <tbody>
-      {{#each model as |fav|}}
-        {{business-list-item business=fav.business bizId=fav.business.id}}
+      {{#each businesses as |biz|}}
+        {{business-list-item business=biz bizId=biz.id}}
       {{/each}}
     </tbody>
   </table>

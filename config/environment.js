@@ -20,6 +20,24 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    // http://aqueous-cliffs-83557.herokuapp.com'
+    contentSecurityPolicy: {
+      'default-src': "'self'",
+      // Allow scripts from live reload
+      'script-src': "'self' ws://localhost:49153",
+      // Add external font uri
+      'font-src': "'self'",
+      // Allow data (ajax/websocket) from course api https://bnr-tracker-api.herokuapp.com
+      // Allow scripts from live reload
+      'connect-src': "'self' http://aqueous-cliffs-83557.herokuapp.com ws://localhost:49153",
+      // Allow images from the origin itself (i.e. current domain)
+      'img-src': "'self'",
+      // Allow inline styles
+      'style-src': "'self' 'unsafe-inline'",
+      // `media-src` will be omitted from policy
+      // Browser will fallback to default-src for media resources (which is to deny, see above).
+      'media-src': null
     }
   };
 
