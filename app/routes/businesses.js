@@ -1,7 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-    return this.store.findAll('business');
+  model(params) {
+    return this.store.query('business', { page: {
+      number: params.page,
+      size: params.size
+    }});
+  },
+
+  queryParams: {
+    page: {
+      refreshModel: true
+    },
+    size: {
+      refreshModel: true
+    }
   }
 });

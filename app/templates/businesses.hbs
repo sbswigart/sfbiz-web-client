@@ -1,1 +1,9 @@
 {{business-list businesses=model}}
+
+{{#each count as |number|}}
+  {{#if (eq number model.meta.pagination.self.number) }}
+    {{ number }}
+  {{else}}
+    {{link-to number "businesses" (query-params page=number)}}
+  {{/if}}
+{{/each}}
