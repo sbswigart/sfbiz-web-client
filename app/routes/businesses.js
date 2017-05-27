@@ -5,7 +5,9 @@ export default Ember.Route.extend({
     return this.store.query('business', { page: {
       number: params.page,
       size: params.size
-    }});
+    },
+    search: params.search
+  });
   },
 
   queryParams: {
@@ -13,6 +15,9 @@ export default Ember.Route.extend({
       refreshModel: true
     },
     size: {
+      refreshModel: true
+    },
+    search: {
       refreshModel: true
     }
   }
