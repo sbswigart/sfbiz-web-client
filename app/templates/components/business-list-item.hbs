@@ -2,6 +2,13 @@
   <button {{action 'toggleFavorite' bizId}} class="fav-btn"><li class="fa {{if isFavorite "fa-heart" "fa-heart-o"}}"></li></button>
 </td>
 <td>{{business.name}}</td>
-<td>{{business.address}}</td>
+<td>
+  {{business.address}}
+  {{#if business.distance}}
+    <div>
+      <small>{{format-distance business.distance}}</small>
+    </div>
+  {{/if}}
+</td>
 <td>{{business.startDate}}</td>
 <td>{{business.endDate}}</td>

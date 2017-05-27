@@ -1,13 +1,19 @@
 
 <h4 class="business-heading">San Francisco Business List</h4>
-{{input value=search class="form-control" placeholder="search business name"}}
-
+<form class="form-inline search-form">
+  {{input value=search class="form-control col-sm-4" placeholder="search business name" key-press="typing" }}
+  <button disabled type="button" {{action "geoSearch"}} class="btn btn-primary form-control geo-search"><small>geo search disabled until https </small><li class="fa fa-map-marker fa-lg"></li></button>
+</form>
 {{business-list businesses=model}}
 
-{{#each count as |number|}}
-  {{#if (eq number model.meta.pagination.self.number) }}
-    {{ number }}
-  {{else}}
-    {{link-to number "businesses" (query-params page=number)}}
-  {{/if}}
-{{/each}}
+<div class="page-container">
+  <ul class="pagination">
+    {{#each count as |number|}}
+      {{#if (eq number model.meta.pagination.self.number) }}
+        <li class="page-item active"><span class="page-link">{{ number }}</span></li>
+      {{else}}
+        <li class="page-item">{{link-to number "businesses" (query-params page=number) class="page-link"}}</li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</div>

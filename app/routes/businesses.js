@@ -6,7 +6,9 @@ export default Ember.Route.extend({
       number: params.page,
       size: params.size
     },
-    search: params.search
+    search: params.search,
+    longitude: params.longitude,
+    latitude: params.latitude
   });
   },
 
@@ -18,6 +20,12 @@ export default Ember.Route.extend({
       refreshModel: true
     },
     search: {
+      refreshModel: true
+    },
+    longitude: {
+      refreshModel: true
+    },
+    latitude: {
       refreshModel: true
     }
   }
