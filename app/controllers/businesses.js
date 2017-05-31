@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
   search: "",
   longitude: "",
   latitude: "",
+  geoLoading: false,
+  geoError: null,
 
   count: Ember.computed('model.meta.pagination.last.number', 'model.meta.pagination.self.number', function() {
     const total = this.get('model.meta.pagination.last.number') || this.get('model.meta.pagination.self.number');
@@ -17,11 +19,16 @@ export default Ember.Controller.extend({
 
   actions: {
     geoSearch() {
+      this.set('geoLoading', true);
       this.get('geolocation').getLocation().then((geoObject) => {
         if (geoObject.coords) {
           this.set('longitude', geoObject.coords.longitude);
           this.set('latitude', geoObject.coords.latitude);
         }
+        this.set('geoLoading', false);
+      }).catch((reason) => {
+        this.set('geoLoading', false);
+        this.set('geoError', reason.message);
       })
     },
     typing() {

@@ -31,7 +31,7 @@ module.exports = function(environment) {
       'font-src': "'self'",
       // Allow data (ajax/websocket) from course api https://bnr-tracker-api.herokuapp.com
       // Allow scripts from live reload
-      'connect-src': "'self' http://aqueous-cliffs-83557.herokuapp.com ws://localhost:49153",
+      'connect-src': "'self' https://aqueous-cliffs-83557.herokuapp.com ws://localhost:49153",
       // Allow images from the origin itself (i.e. current domain)
       'img-src': "'self'",
       // Allow inline styles
@@ -62,7 +62,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.host = 'http://aqueous-cliffs-83557.herokuapp.com'
+    ENV.APP.host = 'https://aqueous-cliffs-83557.herokuapp.com'
 
   }
 

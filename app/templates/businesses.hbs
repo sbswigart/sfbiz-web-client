@@ -1,8 +1,18 @@
+{{#if geoError}}
+<div class="alert alert-danger" role="alert">
+  <strong>Unable to get location! </strong>{{geoError}}
+</div>
+{{/if}}
 
 <h4 class="business-heading">San Francisco Business List</h4>
 <form class="form-inline search-form">
   {{input value=search class="form-control col-sm-4" placeholder="search business name" key-press="typing" }}
-  <button disabled type="button" {{action "geoSearch"}} class="btn btn-primary form-control geo-search"><small>geo search disabled until https </small><li class="fa fa-map-marker fa-lg"></li></button>
+  <div class="geo-search">
+    {{#if geoLoading}}
+      <li class="fa fa-spinner fa-lg fa-spin"></li>
+    {{/if}}
+    <button type="button" {{action "geoSearch"}} class="btn btn-primary form-control geo-search"><small>Search Near Me </small><li class="fa fa-map-marker fa-lg"></li></button>
+  </div>
 </form>
 {{business-list businesses=model}}
 
